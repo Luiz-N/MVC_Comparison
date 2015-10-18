@@ -1,53 +1,33 @@
-# Frameworks
+# MVC Dashboard
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+For this challenge I decided to build out the dashboard in Ember. The main goals for the task were to build a dashboard that allowed an end user to quickly compare three MVC frameworks based off of primarily their github activity. The dashboard needed to update itself without manually refreshing and displayed key metrics such as:
 
-## Prerequisites
+ * Commit Activity
+ * # of Stars
+ * # of Forks
+ * # of Subscribers
+ * # of Issues
 
-You will need the following things properly installed on your computer.
+## Process
+  
+Ember was chosen for this task since it's the framework I know best and would allow me to use an external API the "ember way" for the first time. This ultimately ended up being the most challenging part. I started by learning how ember's [custom link adapter/serializer] (http://emberigniter.com/fit-any-backend-into-ember-custom-adapters-serializers/) worked. After understanding how that worked (document is sparse) I started looking around for different charting libraries and played with chart.js before deciding to just go with highcharts. Bootstrap was used for a grid system.
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://www.ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
+Following Ember's evolving best practices I used no controllers and instead created a Dashboard component that contained multiptle children chart-components. For simplicity there are only two models: "repo" and "weeklyCommits". A repo hasMany weeklyCommits. These models were also influenced by the available backend API.
 
-## Installation
+## More Info
 
-* `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install`
-* `bower install`
+The Repo model contains key attributes such as the name, url, description, star count, fork count, and other similar characteristics. The weeklyCommit model contains only two attributes: week (UTC #) and total (# of commits that week). It allows githubs restful API to be used for the model's backend calls.
 
-## Running / Development
+The models update themselves every 5 mins via a recursive function that is triggered in the model hook of the dashboard route.
 
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+The dashboard component contains most of the key logic. The chart components are rendered using highcharts via a ember addon called [ember-highcharts](https://github.com/ahmadsoe/ember-highcharts). The Google trend charts are inserted via an iframe.
 
-### Code Generators
+## Next Steps
 
-Make use of the many generators for code, try `ember help generate` for more details
+This serves as a decent "first version" but any further work would require the creation of more models. A chart model in particular would be the next step. This would help DRY up a lot of the redunanct code in the dashboard component surrounding the differnt chart options and data.
 
-### Running Tests
+Thanks to bootstrap and highcharts the app is mostly response except for the google trend charts. More custom logic would be needed to handle these on samller devices. (yay iframes)
 
-* `ember test`
-* `ember test --server`
+## Final Thoughts
 
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://www.ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+Overall I enjoyed the project. It was my first time using an external API with ember and although it had it's challenges I learned a lot like the direction/potentail of the ember framework. It was also interesting to learn the different US regional interests among the frameworks.
