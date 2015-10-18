@@ -1,3 +1,8 @@
 .repos img{
   height: 75px;
 }
+
+.repos a {
+  display: inline-block;
+  min-height: 50px;
+}

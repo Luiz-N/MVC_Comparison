@@ -11,6 +11,9 @@ export default DS.Model.extend({
   openIssues   :  DS.attr('number'),
   imagePath    :  DS.attr('string'),
 
-  weeklyCommits  :  DS.hasMany('weeklyCommits')
-  // language: DS.attr('string')
+  weeklyCommits  :  DS.hasMany('weeklyCommits'),
+
+  shortName: Ember.computed('repoName', function () {
+    return this.get('repoName').split('.')[0];
+  })
 });

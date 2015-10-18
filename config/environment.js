@@ -7,7 +7,7 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     contentSecurityPolicy: {
-      // 'default-src': "*"
+      'default-src': "*",
       'style-src': "'unsafe-inline'",
       'connect-src': "*"
     },
