@@ -1,5 +1,7 @@
 # MVC Dashboard
 
+[Link to App] (https://limitless-forest-2605.herokuapp.com/)
+
 For this challenge I decided to build out the dashboard in Ember. The main goals for the task were to build a dashboard that allowed an end user to quickly compare three MVC frameworks based off of primarily their github activity. The dashboard needed to update itself without manually refreshing and displayed key metrics such as:
 
  * Commit Activity
@@ -14,13 +16,15 @@ Ember was chosen for this task since it's the framework I know best and would al
 
 Following Ember's evolving best practices I used no controllers and instead created a Dashboard component that contained multiptle children chart-components. For simplicity there are only two models: "repo" and "weeklyCommits". A repo hasMany weeklyCommits. These models were also influenced by the available backend API.
 
+The app is hosted on Heroku.
+
 ## More Info
 
 The Repo model contains key attributes such as the name, url, description, star count, fork count, and other similar characteristics. The weeklyCommit model contains only two attributes: week (UTC #) and total (# of commits that week). It allows githubs restful API to be used for the model's backend calls.
 
 The models update themselves every 5 mins via a recursive function that is triggered in the model hook of the dashboard route.
 
-The dashboard component contains most of the key logic. The chart components are rendered using highcharts via a ember addon called [ember-highcharts](https://github.com/ahmadsoe/ember-highcharts). The Google trend charts are inserted via an iframe.
+The dashboard component contains most of the key logic. The chart components are rendered using highcharts via a ember addon called [ember-highcharts](https://github.com/ahmadsoe/ember-highcharts). The Google trend charts are inserted via iframes.
 
 ## Next Steps
 
