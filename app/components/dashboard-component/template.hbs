@@ -1,0 +1,59 @@
+{{yield}}
+
+<div class="container-fluid">
+
+  <h1 class="col-md-12 text-center">Front End MVC: A Comparison</h1>
+
+  <div class="repos row">
+  {{#each repos as |repo|}}
+    <div class="panel panel-default col-md-4 text-center">
+      <div class="panel-heading">
+        <img src="{{repo.imagePath}}" alt="">
+        <h3>{{repo.repoName}}</h3>
+      </div>
+      <div class="panel-body">
+        <a class="row" href="{{repo.homepage}}" target="_blank">{{repo.description}}</a>
+      </div>
+    </div>
+
+  {{/each}}
+  </div>
+
+
+
+  <div class="well well-lg col-md-6">
+    {{high-charts
+      content=starData
+      chartOptions=starOptions
+    }}
+  </div>
+
+  <div class="well well-lg col-md-6">
+    {{high-charts
+      content=subscriberData
+      chartOptions=subscriberOptions
+    }}
+  </div>
+
+  <div class="well well-lg col-md-12">
+    {{high-charts
+      content=lineData
+      chartOptions=lineOptions
+    }}
+  </div>
+
+  <div class="well well-lg col-md-6">
+    {{high-charts
+      content=forkData
+      chartOptions=forkOptions
+    }}
+  </div>
+
+  <div class="well well-lg col-md-6">
+    {{high-charts
+      content=issueData
+      chartOptions=issueOptions
+    }}
+  </div>
+
+</div>
