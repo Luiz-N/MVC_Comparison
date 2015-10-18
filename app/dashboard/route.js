@@ -24,7 +24,5 @@ export default Ember.Route.extend({
 
  setupController(controller, model) {
     controller.set('repos', model);
-    // controller.set('labels', model.getEach('repoName'));
-    // controller.set('weeklyCommits', model.getEach('weeklyCommits'));
   }
 });

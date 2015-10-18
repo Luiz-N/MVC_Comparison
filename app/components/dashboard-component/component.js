@@ -33,6 +33,17 @@ export default Ember.Component.extend({
         chart: {
           type: 'spline'
         },
+        tooltip: {
+          crosshairs: true,
+          shared: true
+        },
+        plotOptions: {
+          series: {
+            marker: {
+              enabled: false
+            }
+          }
+        },
         title: {
           text: 'YTD Weekly Commits'
         },
