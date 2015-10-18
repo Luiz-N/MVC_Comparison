@@ -8,7 +8,5 @@ export default DS.RESTAdapter.extend({
     return url + '/repos/' + id;
   },
 
-  headers: {
-    Authorization: "token 26ffd0567614bbbd7dbc9566a51aead3d746be70"
-  }
+
 });
